@@ -78,7 +78,7 @@ T GenStack<T>::pop()
   try
   {
     if(isEmpty())
-      throw EmptyStackException("Stack is empty, so nothing can be popped.");
+      throw EmptyStackException("ERROR: Cannot pop something from an empty stack.");
     else
     {
       --top;
@@ -97,7 +97,7 @@ T GenStack<T>::peek()
   try
   {
     if(isEmpty())
-      throw EmptyStackException("Stack is empty.");
+      throw EmptyStackException("ERROR: Cannot peek() an empty stack.");
     else
     {
       return myArray[top];

@@ -16,6 +16,7 @@ int main(int argc, char** argv)
   bool valid_file = true;
 
   int index = 1;
+  int is_string = -1;
 
   GenStack<char> s(100);
   Delimiters d;
@@ -31,22 +32,33 @@ int main(int argc, char** argv)
     {
       for(int i = 0; i < line.length(); ++i)
       {
-        if(d.isOpenDelimiter(line[i]))
+        if(line[i] == '"' && line[i+1] != '\'')
         {
-          s.push(line[i]);
+          is_string = is_string * -1;
         }
 
-        if(d.isCloseDelimiter(line[i]))
+        if(d.isOpenDelimiter(line[i]) && line[i+1] != '\'')
         {
-          if(d.isMatch(s.peek(), line[i]))
+          if(is_string < 0)
           {
-            s.pop();
+            s.push(line[i]);
           }
-          else
+        }
+
+        if(d.isCloseDelimiter(line[i]) && line[i+1] != '\'')
+        {
+          if(is_string < 0)
           {
-            cout << "Error, Line " << index << ": Expected " << d.getMatch(s.peek()) << " but found " << line[i] << " instead." << endl;
-            valid_file = false;
-            break;
+            if(d.isMatch(s.peek(), line[i]))
+            {
+              s.pop();
+            }
+            else
+            {
+              cout << "Error, Line " << index << ": Expected " << d.getMatch(s.peek()) << " but found " << line[i] << " instead." << endl;
+              valid_file = false;
+              break;
+            }
           }
         }
       }
