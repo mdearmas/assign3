@@ -9,9 +9,9 @@
   is an EmptyStackException class, which is thrown if the program attempts to pop() or peek() an empty stack.
 */
 
-#include <iostream>
+#include <iostream> //allows access to input/output
 
-using namespace std;
+using namespace std; //allows access to the standard library
 
 template <typename T> /*Source: http://www.cplusplus.com/doc/oldtutorial/templates/*/
 class GenStack //the class definition for a generic stack interface
