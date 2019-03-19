@@ -87,7 +87,7 @@ T GenStack<T>::pop()
   }
   catch(EmptyStackException& e)
   {
-    cout << e.getErrorMessage();
+    cout << e.getErrorMessage() << endl;
   }
 }
 
@@ -100,12 +100,12 @@ T GenStack<T>::peek()
       throw EmptyStackException("Stack is empty.");
     else
     {
-      return myArray[top + 1];
+      return myArray[top];
     }
   }
   catch(EmptyStackException& e)
   {
-    cout << e.getErrorMessage();
+    cout << e.getErrorMessage() << endl;
   }
 }
 
