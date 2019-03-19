@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 
   int index = 1;
 
-  GenStack<char> s(1000);
+  GenStack<char> s(100);
   Delimiters d;
 
   cout << "Please enter your file: ";
