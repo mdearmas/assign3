@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 
           if(d.isCloseDelimiter(line[i])) //checks if the character is a close delimiter
           {
-            if(s.isEmpty())
+            if(s.isEmpty()) //checks if the stack is empty
             {
               cout << "Error, Line " << index << ": Closing " << line[i] << " with no matching opener. " << endl;
               valid_file = false; //sets up break out of while(getline) loop
