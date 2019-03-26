@@ -54,7 +54,13 @@ int main(int argc, char** argv)
 
           if(d.isCloseDelimiter(line[i])) //checks if the character is a close delimiter
           {
-            if(d.isMatch(s.peek(), line[i])) //checks if the close delimiter matches the open delimiter at the top of the stack
+            if(s.isEmpty())
+            {
+              cout << "Error, Line " << index << ": Closing " << line[i] << " with no matching opener. " << endl;
+              valid_file = false; //sets up break out of while(getline) loop
+              break; //breaks out of for loop
+            }
+            else if(d.isMatch(s.peek(), line[i])) //checks if the close delimiter matches the open delimiter at the top of the stack
             {
               s.pop(); //removes the top of the stack if the match is correct
             }
